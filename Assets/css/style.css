@@ -1,7 +1,7 @@
 body {
     background-color: black;
     background: url('../media/stars_3.jpg');
-    background-size: cover;
+    background-size: fill;
     overflow: hidden;
 
 }
@@ -31,8 +31,16 @@ div .jumbotron {
 #galaxy {
     /*margin-top: ;*/
     margin-right: 60px;
-    height: 50%;
-    width: 50%;
+    height: 150%;
+    width: 150%;
+    position: relative;
+}
+
+#black-hole {
+    margin-top: -60px;
+    margin-right: 60px;
+    height: 80%;
+    width: 80%;
     position: relative;
 }
 
@@ -53,7 +61,7 @@ div .jumbotron {
 
 #neptune {
     margin-right: 60px;
-    margin-top: -20px;
+    margin-top: -30px;
     height: 90%;
     width: 90%;
     position: relative;
@@ -86,27 +94,24 @@ div .jumbotron {
 .box {
     position: absolute;
     left: 150%;
-    top: 60px;
-    /*display: inherit;*/
+    top: 10%;
+    display: block;
     margin-left: -35%;
 }
 
-#box1 {
-    left: 50%;
-}
-
-#box2 {
+.quiz {
 
 }
 
-#box3 {
-
+.answer-choices {
+    display: flex;
 }
 
-#box4 {
-
+#correct {
+    color: green;
 }
 
-#box5 {
-
+#incorrect{
+    color: red;
 }
+

@@ -20,49 +20,68 @@
 
 <!-- Overall Bootstrap Grid -->
 <div class="container">
-    <!-- Jumbotron with Title -->
-    <div class="jumbotron">
+    <!-- Home -->
+    <div id="home" class="jumbotron">
         <h1 class="text-center"><strong>Space Trivia</strong></h1>
         <hr>
-        <div class="text-center">
-            <button class="btn btn-default btn-lg normal-button"><span class="glyphicon glyphicon-ok-sign"></span> Normal</button>
-            <button class="btn btn-primary btn-lg "><span class="glyphicon glyphicon-plus-sign"></span> Grow</button>
-            <button class="btn btn-danger btn-lg shrink-button"><span class="glyphicon glyphicon-minus-sign"></span> Shrink</button>
-            <button class="btn btn-default btn-lg normal-button"><span class="glyphicon glyphicon-ok-sign"></span> Normal</button>
-        </div>
-
+        <h3 id="ready-text" class="text-center">Show me what you got!</h3>
+        <button id="start-quiz" class="btn btn-primary btn-lg">Start Quiz</button>
     </div>
+    <!-- Quiz -->
+    <div id="quiz" class="jumbotron">
+        <h4 id="question-number" class="text-center">Question 1</h4>
+        <h2 id="question" class="text-center"><strong>Question</strong></h2>
+        <hr>
+        <h3 id="timer" class="text-center">15</h3>
+        <div class="answer-choices">
+            <button id="answer-1" class="btn btn-primary btn-lg">Pluto</button>
+            <button id="answer-2" class="btn btn-primary btn-lg ">Moon</button>
+            <button id="answer-3" class="btn btn-primary btn-lg">Neptune</button>
+            <button id="answer-4" class="btn btn-primary btn-lg">Normal</button>
+        </div>
+    </div>
+    <!-- Score -->
+    <div id="score" class="jumbotron">
+            <h1 class="text-center"><strong>Score</strong></h1>
+            <hr>
+            <h2 id="percentage" class="text-center">100%</h2>
+            <h3 id="correct" class="text-center">10 Correct</h3>
+            <h3 id="incorrect" class="text-center">0 Incorrect</h3>
+            <button id="done" class="btn btn-primary btn-lg">Done</button>
+        </div>
 
     <div class="row">
         <div id="img-container" class="container">
-            <!-- Captain Planet Image -->
-            <div id="box1" class="box">
-                <img id="moon" src="Assets/media/moon.png" alt="">
+            <!-- <div id="moon" class="box">
+                <img src="Assets/media/moon.png" alt="">
+            </div> -->
+            <!-- <div id="neptune" class="box">
+                <img src="Assets/media/neptune.png" alt="">
             </div>
-            <div id="box2" class="box">
-                <img id="venus" src="Assets/media/venus.png" alt="">
+            <div id="venus" class="box">
+                <img src="Assets/media/venus.png" alt="">
             </div>
-            <div id="box3" class="box">
-                <img id="neptune" src="Assets/media/neptune.png" alt="">
+            <div id="sun" class="box">
+                <img src="Assets/media/sun.png" alt="">
             </div>
-            <div id="box4" class="box">
-                <img id="sun" src="Assets/media/sun.png" alt="">
+            <div id="jupiter" class="box">
+                <img src="Assets/media/jupiter.png" alt="">
             </div>
-            <div id="box5" class="box">
-                <img id="jupiter" src="Assets/media/jupiter.png" alt="">
+            <div id="earth" class="box">
+                <img src="Assets/media/earth.png" alt="">
             </div>
-            <div id="box6" class="box">
-                <img id="earth" src="Assets/media/earth.png" alt="">
-            </div>
-            <div id="box7" class="box">
-                <img id="saturn" src="Assets/media/saturn_2.png" alt="">
+            <div id="saturn" class="box">
+                <img src="Assets/media/saturn_2.png" alt="">
             </div>
             <div id="box8" class="box">
-                <img id="galaxy" src="Assets/media/galaxy.png" alt="">
+                <img id="galaxy" src="Assets/media/galaxy2.png" alt="">
             </div>
-            <!--<img id="img" src="Assets/media/moon.png" alt="">-->
+            <div id="black-hole" class="box">
+                <img src="Assets/media/black-hole.png" alt="">
+            </div> -->
         </div>
     </div>
+
 </div>
 
 
