@@ -1,67 +1,16 @@
-
 // JavaScript function that wraps everything
 $(document).ready(function() {
-
-    // Gets Link for Theme Song
-//        var audioElement = document.createElement("audio");
-//        audioElement.setAttribute("src", "Assets/captainplanet24.mp3");
-
-    // Theme Button
-//        $(".theme-button").on("click", function() {
-//            audioElement.play();
-//        });
-//
-//        $(".pause-button").on("click", function() {
-//            audioElement.pause();
-//        });
-
-    var questions = [
-        {
-            question : 'What year did the humans first land on the moon?',
-            answers : ['1951', '1969', '1954', '1964'],
-            correctAnswer : 1, // index of correct anwers
-            imageId : 'moon'
-        },
-        {
-            question : 'Which one is not a type of galaxy?',
-            answers : ['Irregular', 'Elliptical', 'Orbital', 'Spiral'],
-            correctAnswer : 2, // index of correct anwers
-            imageId : 'galaxy'
-        },
-        {
-            question : 'What process fuels the sun?',
-            answers : ['Photosynthesis', 'Nuclear Fusion', 'Prescipitation', 'Condensation'],
-            correctAnswer : 1, // index of correct anwers
-            imageId : 'sun'
-        },
-        {
-            question : 'Which of these facts about Venus is NOT true?',
-            answers : ['Was named after a Roman goddess', 'Is second brightest object in the sky', '1 day is longer than a year on Earth', 'Has a very strong magnetic field'],
-            correctAnswer : 3, // index of correct anwers
-            imageId : 'venus'
-        },
-        {
-            question : 'Which of these is true about Mercury?',
-            answers : ['It is the smallest planet', 'It is the most dense planet', 'It is the hottest planet', 'A year on Mercury is just 44 days long'],
-            correctAnswer : 0, // index of correct anwers
-            imageId : 'mercury'
-        },
-        {
-            question : 'Which of these is true about Jupiter?',
-            answers : ['It is the 6th planet from the Sun', 'It has the shortest day of all the planets', 'It is mostly made up of helium', 'It is the brightest object in the solar system'],
-            correctAnswer : 1, // index of correct anwers
-            imageId : 'jupiter'
-        }
-    ];
 
     // Initialize count down timer variable so that it 
     // can be stopped using clearInterval
     var countDown; 
+    // Keeps track of question number
     var questionIndex = 0;
-    var time = 15; // seconds
+    // Number of seconds for countdown timer
+    var time = 15; 
+    // Stores correct and incorrect answers
     var correctAnswers = 0;
     var incorrectAnswers = 0;
-
 
     // Question timer
     function timer() {
@@ -88,7 +37,7 @@ $(document).ready(function() {
         }, 1000);
     }
 
-
+    // Ready, set, begin countdown
     function readySet() {
         var x = 0;
         for (var i = 0; i <= 3; i++) {
@@ -114,19 +63,27 @@ $(document).ready(function() {
         };
     }
 
-    function loadQuestion(index) {
-        $('#question-number').text('Question ' + (index + 1));
-        $('#question').text(questions[index].question);
-        $('#answer-1').text(questions[index].answers[0]);
-        $('#answer-2').text(questions[index].answers[1]);
-        $('#answer-3').text(questions[index].answers[2]);
-        $('#answer-4').text(questions[index].answers[3]);
+    // Loads new queestion and answer choices
+    function loadQuestion(questionIndex) {
+        $('#question-number').text('Question ' + (questionIndex + 1));
+        $('#question').text(questions[questionIndex].question);
+        $('#answer-1').text(questions[questionIndex].answers[0]);
+        $('#answer-2').text(questions[questionIndex].answers[1]);
+        $('#answer-3').text(questions[questionIndex].answers[2]);
+        $('#answer-4').text(questions[questionIndex].answers[3]);
+        // Update image
+        updateImage(questions[questionIndex].imageId);
+        // Display new question
         $('#quiz').fadeIn(1000);
+        // Resets timer
         time = 15;
+        // Starts new timer
         timer();
     }
 
+    // Loads new question or ends game if all questions are completed
     function nextQuestion() {
+        // Updates question number
         questionIndex++;
         if (questionIndex > (questions.length - 1)) {
             endGame();
@@ -135,74 +92,81 @@ $(document).ready(function() {
         }
     }
 
+    // Calculates score and displays score view
     function showScore() {
         var percentage = (correctAnswers / (correctAnswers + incorrectAnswers)) * 100;        
         $('#percentage').text(Math.round(percentage).toString() + '%');
         $('#correct').text(correctAnswers.toString() + ' Correct');
         $('#incorrect').text(incorrectAnswers.toString() + ' Incorrect'); 
+        $('.image').attr('id', 'solar-system').attr('src', 'images/solar-system.png'); 
         $('#score').show(1000);
         $('#done').click(function(){
             reset();
         });       
     }
 
+    // Checks whether answer is correct or incorrect
     function checkAnswer(questionIndex, answerIndex) {
         stopTimer();
+        // Prevents css :focus from getting stuck on answer
+        document.getElementById("answer-" + (answerIndex + 1)).blur();
         var answer = questions[questionIndex].correctAnswer;
         if (answerIndex === answer) {
             correctAnswers++;
+            // Notifies player whether they answered correctly 
             $('#timer').css('color', 'green').text('Correct');
             setTimeout(() => {
+                // Resets timer text
                 $('#timer').text('15');
+                // Loads next question
                 nextQuestion();
             }, 1000);
         } else {
             incorrectAnswers++;
-            console.log(incorrectAnswers);
-            
+            // Notifies player whether they answered incorrectly 
             $('#timer').css('color', 'red').text('Incorrect').shake({
                 interval: 100,
                 distance: 20,
                 times: 5
             });
             setTimeout(() => {
+                // Resets timer text
                 $('#timer').text('15');
+                // Loads next question
                 nextQuestion();
             }, 1000);
         }
     }
 
+    // Kills timer
     function stopTimer() {
         window.clearInterval(countDown);
     }
 
+    // Begins game
     function startGame() {
         // Hide home 
-        $('#home').hide();
-
+        $('#home').hide()
         // Load first question
         loadQuestion(questionIndex);
 
         // Answer button listeners
         $('#answer-1').click(function(){
-            
             checkAnswer(questionIndex, 0);
         });
         $('#answer-2').click(function(){
-            //stopTimer();
             checkAnswer(questionIndex, 1);
         });
         $('#answer-3').click(function(){
-            //stopTimer();
             checkAnswer(questionIndex, 2);
         });
         $('#answer-4').click(function(){
-            //stopTimer();
             checkAnswer(questionIndex, 3);
         });
         
     }
 
+    // Ends game
     function endGame() {
         // End quiz
         $('#quiz').hide();
@@ -221,6 +185,44 @@ $(document).ready(function() {
         $('#home').fadeIn(1000);
     }
 
+    // Updates image with corresponding question ID
+    function updateImage(imageId) {
+        switch (imageId) {
+            case 'sun': 
+                $('.image').attr('id', 'sun').attr('src', 'images/sun.png'); 
+                break
+            case 'moon': 
+                $('.image').attr('id', 'moon').attr('src', 'images/moon.png'); 
+                break
+            case 'earth': 
+                $('.image').attr('id', 'earth').attr('src', 'images/earth.png');
+                break
+            case 'mars': 
+                $('.image').attr('id', 'mars').attr('src', 'images/mars.png');
+                break
+            case 'jupiter': 
+                $('.image').attr('id', 'jupiter').attr('src', 'images/jupiter.png'); 
+                break
+            case 'saturn': 
+                $('.image').attr('id', 'saturn').attr('src', 'images/saturn.png'); 
+                break
+            case 'venus': 
+                $('.image').attr('id', 'venus').attr('src', 'images/venus.png'); 
+                break    
+            case 'mercury': 
+                $('.image').attr('id', 'mercury').attr('src', 'images/mercury.png'); 
+                break  
+            case 'uranus': 
+                $('.image').attr('id', 'uranus').attr('src', 'images/uranus.png'); 
+                break   
+            case 'neptune': 
+                $('.image').attr('id', 'neptune').attr('src', 'images/neptune.png'); 
+                break  
+            case 'galaxy': 
+                $('.image').attr('id', 'galaxy').attr('src', 'images/galaxy.png'); 
+                break    
+        }
+    }
 
     // Shake animation for timer
     (function($){
@@ -250,41 +252,14 @@ $(document).ready(function() {
     })(jQuery);
 
 
-    // $.fn.animateRotate = function(angle, duration, easing, complete) {
-    //     var args = $.speed(duration, easing, complete);
-    //     var step = args.step;
-    //     return this.each(function(i, e) {
-    //         args.complete = $.proxy(args.complete, e);
-    //         args.step = function(now) {
-    //             $.style(e, 'transform', 'rotate(' + now + 'deg)');
-    //             if (step) return step.apply(e, arguments);
-    //         };
-
-    //         $({deg: 0}).animate({deg: angle}, args);
-    //     });
-    // };
-
-    // // Answer choices
-    // $('.btn').click(function() {
-    //     $('.box').animate({
-    //         left: '-50%'
-    //     }, 3000, function() {
-    //         $('.box').css('left', '150%');
-    //         $('.box').appendTo('#img-container');
-    //     }).animateRotate(50, 3000);
-
-    //     $('.box').next().animate({
-    //         left: '50%'
-    //     }, 3000);
-
-    //     $('.box').animate().animateRotate(90, 4000);
-    // });
-
     // Loads home page
     reset();
 
     // Triggers start of game
     $('#start-quiz').click(function(){
+        // Prevents css :focus from being applied to start button 
+        document.getElementById("start-quiz").blur();
+        // Get player ready 
         readySet();
     });
     

@@ -1,0 +1,138 @@
+body {
+    background-color: black;
+    background: url('../images/stars.jpg');
+    background-size: cover;
+    overflow: hidden;
+
+}
+
+div .jumbotron {
+    background: transparent;
+    color: white;
+}
+
+.btn {
+    margin: 2px;
+}
+
+#img-container {
+    margin: 3% 0 0 2%;
+}
+
+#quiz {
+    z-index: 1;
+}
+
+#start-quiz {
+    margin: 5% 0 0 44.5%
+}
+
+#question-number {
+    color: white;
+    background: rgb(75, 75, 75);
+    width: 16%;
+    height: 30px;
+    padding: 5px;
+    border-radius: 4px;
+    margin-left: 42%;
+}
+
+#answer-choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#done {
+    margin: 5% 0 0 46.5%
+}
+
+#correct {
+    color: green;
+}
+
+#incorrect{
+    color: red;
+}
+
+
+/* Individual images */
+
+#solar-system {
+    margin: -3% 0 0 -17%;
+    height: 120%;
+    width: 120%;
+}
+
+#earth {
+    margin: -2% 0 0 21.5%;
+    height: 50%;
+    width: 50%;
+}
+
+#moon {
+    margin: -7% 0 0 17.5%;
+    height: 60%;
+    width: 60%;
+}
+
+#mars {
+    margin: -3% 0 0 21.5%;
+    height: 50%;
+    width: 50%;
+}
+
+#galaxy {
+    margin: -8% 0 0 17%;
+    height: 60%;
+    width: 60%;
+}
+
+#sun {
+    margin: -8% 0 0 12%;
+    height: 70%;
+    width: 70%;
+}
+
+#jupiter {
+    margin: -5% 0 0 21%;
+    height: 50%;
+    width: 50%;
+}
+
+#saturn {
+    margin: -5% 0 0 10%;
+    height: 70%;
+    width: 70%;
+}
+
+#venus {
+    margin: -3% 0 0 21%;
+    height: 50%;
+    width: 50%;
+}
+
+#neptune {
+    margin: -8% 0 0 16.5%;
+    height: 60%;
+    width: 60%;
+}
+
+#uranus {
+    margin: -4% 0 0 20.5%;
+    height: 50%;
+    width: 50%;
+}
+
+#mercury {
+    margin: -3% 0 0 19%;
+    height: 50%;
+    width: 50%;
+}
+
+
+
+
+
+
+

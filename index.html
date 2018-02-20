@@ -1,90 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Space Trivia</title>
 
     <!-- Bootstrap File -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
 
-    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
 
-    <!--Logic-->
-    <script src="Assets/js/logic.js"></script>
-
 </head>
+
 <body>
 
-<!-- Overall Bootstrap Grid -->
-<div class="container">
-    <!-- Home -->
-    <div id="home" class="jumbotron">
-        <h1 class="text-center"><strong>Space Trivia</strong></h1>
-        <hr>
-        <h3 id="ready-text" class="text-center">Show me what you got!</h3>
-        <button id="start-quiz" class="btn btn-primary btn-lg">Start Quiz</button>
-    </div>
-    <!-- Quiz -->
-    <div id="quiz" class="jumbotron">
-        <h4 id="question-number" class="text-center">Question 1</h4>
-        <h2 id="question" class="text-center"><strong>Question</strong></h2>
-        <hr>
-        <h3 id="timer" class="text-center">15</h3>
-        <div class="answer-choices">
-            <button id="answer-1" class="btn btn-primary btn-lg">Pluto</button>
-            <button id="answer-2" class="btn btn-primary btn-lg ">Moon</button>
-            <button id="answer-3" class="btn btn-primary btn-lg">Neptune</button>
-            <button id="answer-4" class="btn btn-primary btn-lg">Normal</button>
+    <!-- Overall Bootstrap Grid -->
+    <div class="container">
+        <!-- Home -->
+        <div id="home" class="jumbotron">
+            <h1 class="text-center">
+                <strong>Space Trivia</strong>
+            </h1>
+            <hr>
+            <h3 id="ready-text" class="text-center">Show me what you got!</h3>
+            <button id="start-quiz" class="btn btn-primary btn-lg">Start Quiz</button>
         </div>
-    </div>
-    <!-- Score -->
-    <div id="score" class="jumbotron">
-            <h1 class="text-center"><strong>Score</strong></h1>
+        <!-- Quiz -->
+        <div id="quiz" class="jumbotron">
+            <h4 id="question-number" class="text-center">Question 1</h4>
+            <h2 id="question" class="text-center">
+                <strong>Question</strong>
+            </h2>
+            <hr>
+            <h3 id="timer" class="text-center">15</h3>
+            <div id="answer-choices" class="container">
+                <button id="answer-1" class="btn btn-primary btn-lg">Pluto</button>
+                <button id="answer-2" class="btn btn-primary btn-lg ">Moon</button>
+                <button id="answer-3" class="btn btn-primary btn-lg">Neptune</button>
+                <button id="answer-4" class="btn btn-primary btn-lg">Normal</button>
+            </div>
+        </div>
+        <!-- Score -->
+        <div id="score" class="jumbotron">
+            <h1 class="text-center">
+                <strong>Score</strong>
+            </h1>
             <hr>
             <h2 id="percentage" class="text-center">100%</h2>
             <h3 id="correct" class="text-center">10 Correct</h3>
             <h3 id="incorrect" class="text-center">0 Incorrect</h3>
             <button id="done" class="btn btn-primary btn-lg">Done</button>
         </div>
-
-    <div class="row">
+        <!-- Image -->
         <div id="img-container" class="container">
-            <!-- <div id="moon" class="box">
-                <img src="Assets/media/moon.png" alt="">
-            </div> -->
-            <!-- <div id="neptune" class="box">
-                <img src="Assets/media/neptune.png" alt="">
-            </div>
-            <div id="venus" class="box">
-                <img src="Assets/media/venus.png" alt="">
-            </div>
-            <div id="sun" class="box">
-                <img src="Assets/media/sun.png" alt="">
-            </div>
-            <div id="jupiter" class="box">
-                <img src="Assets/media/jupiter.png" alt="">
-            </div>
-            <div id="earth" class="box">
-                <img src="Assets/media/earth.png" alt="">
-            </div>
-            <div id="saturn" class="box">
-                <img src="Assets/media/saturn_2.png" alt="">
-            </div>
-            <div id="box8" class="box">
-                <img id="galaxy" src="Assets/media/galaxy2.png" alt="">
-            </div>
-            <div id="black-hole" class="box">
-                <img src="Assets/media/black-hole.png" alt="">
-            </div> -->
+            <img class="image" id="solar-system" src="images/solar-system.png">
         </div>
     </div>
 
-</div>
-
-
+    <!--Logic-->
+    <script src="js/logic.js"></script>
+    <script src="js/questions.js"></script>
 
 </body>
+
 </html>
